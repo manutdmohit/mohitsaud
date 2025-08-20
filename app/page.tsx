@@ -10,15 +10,26 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Contact />
+        <div className="mb-0">
+          <Hero />
+        </div>
+        <div className="mb-0">
+          <About />
+        </div>
+        <div className="mb-0">
+          <Experience />
+        </div>
+        <div className="mb-0">
+          <Projects />
+        </div>
+        <div className="mb-0">
+          <Skills />
+        </div>
+        <div className="mb-0">
+          <Contact />
+        </div>
         <FloatingContact />
       </main>
-      {/* <Footer /> */}
     </div>
   );
 }
