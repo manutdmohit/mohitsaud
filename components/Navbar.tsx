@@ -177,12 +177,12 @@ export default function Navbar() {
     <>
       <header
         className={cn(
-          'site-navbar fixed top-0 inset-x-0 z-[110] transition-shadow duration-200',
+          'site-navbar fixed top-0 inset-x-0 z-[110] overflow-visible transition-shadow duration-200',
           scrolled && 'site-navbar-scrolled'
         )}
       >
-        <div className="max-w-5xl mx-auto container-padding">
-          <div className="flex h-16 items-center justify-between gap-4">
+        <div className="max-w-5xl mx-auto container-padding overflow-visible">
+          <div className="flex h-16 items-center justify-between gap-4 overflow-visible">
             <Link
               href="#home"
               onClick={() => handleNavClick('home')}
@@ -212,7 +212,7 @@ export default function Navbar() {
               })}
             </nav>
 
-            <div className="flex items-center gap-1 sm:gap-2">
+            <div className="flex items-center gap-1 sm:gap-2 overflow-visible">
               <Link href={siteConfig.resume} download className="hidden sm:block">
                 <Button variant="outline" size="sm">
                   <Download className="h-3.5 w-3.5 mr-1.5" />
