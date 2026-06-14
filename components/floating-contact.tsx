@@ -10,7 +10,7 @@ export default function FloatingContact() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-2">
+    <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2 pb-[env(safe-area-inset-bottom)]">
       {isOpen ? (
         <>
           <Link
