@@ -1,171 +1,104 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { GraduationCap, MapPin, Mail, Phone, Calendar, Award, Code, Users } from 'lucide-react';
+import { SectionHeader } from '@/components/section-header';
+import { FadeIn } from '@/components/fade-in';
+import { siteConfig } from '@/lib/site-data';
+import { GraduationCap, MapPin, Mail, Phone } from 'lucide-react';
+
+const coreTech = [
+  'Next.js',
+  'Node.js',
+  'TypeScript',
+  'React',
+  'MongoDB',
+  'MySQL',
+  'Stripe',
+  'Khalti',
+];
 
 export default function About() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
-  const stats = [
-    { icon: Code, label: "Projects Completed", value: "50+" },
-    { icon: Users, label: "Happy Clients", value: "25+" },
-    { icon: Award, label: "Years Experience", value: "3+" },
-    { icon: GraduationCap, label: "Technologies", value: "15+" },
-  ];
-
   return (
-    <section id="about" className="section-padding bg-muted/30 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-gradient-to-tr from-purple-500/5 to-transparent rounded-full blur-3xl" />
-      </div>
+    <section id="about" className="section-padding section-divider">
+      <div className="max-w-5xl mx-auto container-padding">
+        <FadeIn>
+          <SectionHeader
+            number="01 — About"
+            title="Engineering background, product-focused development"
+            description="I combine an electronics engineering foundation with years of shipping full-stack products for clients in Nepal and Australia."
+          />
+        </FadeIn>
 
-      <div className="max-w-screen-xl mx-auto container-padding">
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="max-w-4xl mx-auto"
-        >
-          {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4 px-4 py-2 text-sm">
-              About Me
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Crafting Digital Experiences with{' '}
-              <span className="gradient-text">Passion & Precision</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              I'm a dedicated full-stack developer who transforms ideas into exceptional digital solutions.
+        <FadeIn delay={0.08}>
+        <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16">
+          <div className="space-y-5 text-muted-foreground leading-relaxed">
+            <p>
+              With a background in electronics and communication engineering, I approach
+              software with the same emphasis on reliability, clarity, and systems thinking.
             </p>
-          </motion.div>
+            <p>
+              As a freelance software engineer, I&apos;ve built booking platforms, admin
+              dashboards, payment flows, and client websites end to end. Previously at
+              Prabidhi Labs and Nikolavinci, I focused on Node.js development and technical
+              writing.
+            </p>
+            <p>
+              I care about maintainable architecture, predictable APIs, and interfaces that
+              feel straightforward for both users and the teams operating them.
+            </p>
 
-          {/* Main Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Left Column - Story */}
-            <motion.div variants={itemVariants} className="space-y-6">
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  With a background in <span className="text-primary font-medium">Electronics and Communication Engineering</span>, 
-                  I bring a unique perspective to software development that combines technical precision with creative problem-solving.
-                </p>
-                <p>
-                  Currently working as a <span className="text-primary font-medium">freelance software engineer</span>, I've previously 
-                  contributed to teams at Prabidhi Labs and Nikolavinci, where I honed my skills in Node.js development and technical writing.
-                </p>
-                <p>
-                  My approach centers on creating <span className="text-primary font-medium">clean, efficient, and maintainable code</span> 
-                  that delivers exceptional user experiences. I believe in the power of technology to solve real-world problems and am 
-                  constantly exploring new technologies to enhance my capabilities.
-                </p>
-              </div>
-
-              {/* Skills Preview */}
-              <div className="pt-6">
-                <h3 className="text-lg font-semibold mb-4">Core Technologies</h3>
-                <div className="flex flex-wrap gap-2">
-                  {['Next.js', 'Node.js', 'TypeScript', 'React', 'MongoDB', 'PostgreSQL'].map((tech) => (
-                    <Badge key={tech} variant="outline" className="px-3 py-1">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right Column - Info Cards */}
-            <motion.div variants={itemVariants} className="space-y-6">
-              {/* Personal Info */}
-              <Card className="card-hover">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Users className="w-5 h-5 text-primary" />
-                    Personal Information
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <Mail className="w-4 h-4 text-muted-foreground" />
-                    <span className="text-sm">saudmohit@gmail.com</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Phone className="w-4 h-4 text-muted-foreground" />
-                    <span className="text-sm">+977 9868551045</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <MapPin className="w-4 h-4 text-muted-foreground" />
-                    <span className="text-sm">Kathmandu, Nepal</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Calendar className="w-4 h-4 text-muted-foreground" />
-                    <span className="text-sm">Available for new opportunities</span>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Education */}
-              <Card className="card-hover">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <GraduationCap className="w-5 h-5 text-primary" />
-                    Education
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <h4 className="font-semibold">Bachelor of Engineering - BE</h4>
-                    <p className="text-sm text-muted-foreground">Electronics and Communication</p>
-                    <p className="text-sm text-muted-foreground">Advanced College of Engineering and Management</p>
-                    <p className="text-xs text-muted-foreground">2013 - 2017</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+            <div className="pt-4">
+              <p className="section-label mb-3">Core stack</p>
+              <ul className="flex flex-wrap gap-2">
+                {coreTech.map((tech) => (
+                  <li
+                    key={tech}
+                    className="text-xs px-2.5 py-1 rounded-md border border-border bg-card text-foreground"
+                  >
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* Stats Section */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
-          >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center p-6 rounded-lg bg-card border border-border/50 hover:border-primary/20 transition-colors"
-              >
-                <stat.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                <div className="text-2xl font-bold text-primary mb-1">{stat.value}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
+          <aside className="space-y-6">
+            <div className="surface-card p-6">
+              <p className="section-label mb-4">Contact</p>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-start gap-3">
+                  <Mail className="h-4 w-4 mt-0.5 text-muted-foreground shrink-0" />
+                  <a href={`mailto:${siteConfig.email}`} className="hover:text-primary transition-colors">
+                    {siteConfig.email}
+                  </a>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Phone className="h-4 w-4 mt-0.5 text-muted-foreground shrink-0" />
+                  <a href={`tel:${siteConfig.phone.replace(/\s/g, '')}`} className="hover:text-primary transition-colors">
+                    {siteConfig.phone}
+                  </a>
+                </li>
+                <li className="flex items-start gap-3">
+                  <MapPin className="h-4 w-4 mt-0.5 text-muted-foreground shrink-0" />
+                  <span>{siteConfig.location}</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="surface-card p-6">
+              <p className="section-label mb-4 flex items-center gap-2">
+                <GraduationCap className="h-4 w-4" />
+                Education
+              </p>
+              <div className="space-y-1">
+                <p className="font-medium text-sm">Bachelor of Engineering</p>
+                <p className="text-sm text-muted-foreground">Electronics & Communication</p>
+                <p className="text-sm text-muted-foreground">Tribhuvan University, Nepal</p>
+                <p className="text-xs text-muted-foreground mt-2">2013 – 2017</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+        </FadeIn>
       </div>
     </section>
   );
